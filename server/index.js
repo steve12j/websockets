@@ -23,8 +23,28 @@ const io = new Server(expressServer, {
     }
 });
 
+
+
 io.on("connection", socket => {
     console.log(`User ${socket.id} socked connected`)
+
+    // When a new user connects - to the connected user
+    socket.emit("message","Welcome to chat app!" );
+
+    //Upon Connection - to all others
+    socket.broadcast.emit("message",`User ${socket.id} connected` );
+
+    // When user is active - to all others
+    socket.on('activity', name => {
+        socket.broadcast.emit('activity', name);
+    });
+
+    // When user disconnects - to all others
+    socket.on("disconnect", () => {
+      socket.broadcast.emit("message", `User ${socket.id.substring(0,5)} disconnected`);
+    })
+
+    // Listening to message event
     socket.on("message", data => {
         io.emit("message",`${socket.id.substring(0,5)}: ${data}`);
     });
