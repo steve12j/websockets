@@ -1,15 +1,22 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
   background-color: rgb(37, 36, 36);
   font-size: 1.2rem;
   font-family: sans-serif;
 }
 
-form {
-  margin-top: 1.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: "4rem";
+main {
+  padding: 10px 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 70px 550px 20px 20px 20px 70px;
+  row-gap: 20px;
+  height: 100vh;
 }
 
 input {
@@ -22,7 +29,7 @@ input {
 }
 
 button {
-  padding: 15px 20px;
+  padding: 15px 25px;
   background-color: rgb(208, 218, 221);
   border-radius: 2px;
   border: none;
@@ -34,10 +41,62 @@ ul {
   flex-flow: column;
   justify-self: left;
   color: white;
-  margin-top: 20px;
 }
 
+.chat-display,
+.room-list,
+.user-list,
 .activity {
-  margin-top: 5rem;
   color: white;
+  padding: 10px;
+}
+
+.chat-display {
+  overflow-y: scroll;
+  background-color: rgba(249, 248, 248, 0.377);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+form {
+  align-content: center;
+}
+
+.post {
+  color: white;
+  background-color: rgb(37, 36, 36);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.post__header {
+  color: white;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  border-radius: 5px 5px 0 0;
+  width: 400px;
+}
+
+.post__header--left {
+  background-color: rgb(202, 72, 72);
+}
+.post__header--right {
+  background-color: rgb(72, 141, 202);
+}
+
+.post__text {
+  padding: 15px;
+}
+
+.post--left {
+  align-self: start;
+}
+
+.post--right {
+  align-self: flex-end;
 }
